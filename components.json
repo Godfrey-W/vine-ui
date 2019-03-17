@@ -1,0 +1,4 @@
+{
+  "sendcode": "./packages/sendcode/index.js",
+  "drawer": "./packages/sendcode/drawer.js"
+}

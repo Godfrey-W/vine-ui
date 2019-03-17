@@ -1,0 +1,30 @@
+@import "./github-markdown";
+@import "./atom-one-light";
+@import "./normalize";
+
+.markdown-body {
+  padding-top: 16px;
+  margin: 0 auto;
+  max-width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 100px
+}
+
+.markdown-body .highlight {
+  margin-bottom: 0;
+  padding-bottom: 16px;
+}
+
+@media (min-width: 600px) {
+  .markdown-body {
+    padding-left:24px;
+    padding-right: 24px
+  }
+}
+
+@media (min-width: 960px) {
+  .markdown-body {
+    max-width:960px
+  }
+}
