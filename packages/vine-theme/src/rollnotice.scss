@@ -1,0 +1,38 @@
+$align-items: (
+  left: flex-start,
+  center: center,
+  right: flex-end
+);
+
+.vine {
+  &-rollnotice {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    overflow: hidden;
+    &-item {
+      position: absolute;
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      height: inherit;
+      transition-property: transform;
+      transition-timing-function: ease-out;
+      &--enter {
+        display: flex;
+      }
+      &--active {
+        display: flex;
+        transform: none;
+      }
+    }
+    @each $key, $val in $align-items {
+      &--align-#{$key} {
+        .vine-rollnotice-item {
+          align-items: $val;
+        }
+      }
+    }
+  }
+}

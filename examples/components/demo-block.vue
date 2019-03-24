@@ -5,11 +5,11 @@
         <demo-icon name="code" />
       </button>
     </div>
-    <expand-transition>
+    <collapse-transition>
       <div class="demo-block__meta" v-show="visible">
         <slot name="highlight" />
       </div>
-    </expand-transition>
+    </collapse-transition>
     <div class="demo-block__content">
       <slot name="source" />
     </div>
@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import ExpandTransition from '@/transitions/expand-transition'
+import CollapseTransition from 'vine-ui/src/transitions/collapse-transition'
 export default {
   name: 'demo-block',
   components: {
-    ExpandTransition
+    CollapseTransition
   },
   data () {
     return {

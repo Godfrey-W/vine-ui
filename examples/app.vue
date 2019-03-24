@@ -1,10 +1,19 @@
 <template>
   <div id="app">
-    <vine-drawer dismissible :open="open" title="Vine-ui" subtitle="v0.0.1">
-      sa
-    </vine-drawer>
-    <main class="app-content" :style="contentStyles">
-      <button @click="open = !open">open</button>
+    <demo-drawer>
+      <hr class="demo-divider">
+      <div class="demo-list">
+        <div class="demo-list__group">
+          <div class="demo-list__group__header">组件</div>
+          <ul class="demo-list__group__items">
+            <li v-for="(nav, index) in  navsData" :key="index">
+              <router-link :to="nav.path">{{ nav.title }}</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </demo-drawer>
+    <main class="demo-content">
       <router-view />
     </main>
   </div>
@@ -14,34 +23,14 @@
 export default {
   data () {
     return {
-      open: false
-    }
-  },
-  computed: {
-    contentStyles () {
-      return this.open ? {
-        paddingLeft: '256px',
-        transitionDuration: '200ms'
-      } : {
-        paddingLeft: '',
-        transitionDuration: '250ms'
-      }
+      navsData: [
+        { path: '/collapse', title: 'Collapse 折叠面板' },
+        { path: '/countdown', title: 'Countdown 时间倒计时' },
+        { path: '/rollnotice', title: 'Rollnotice 滚动公告' },
+        { path: '/sendcode', title: 'Sendcode 发送验证码' }
+      ]
     }
   }
 }
 </script>
 
-<style lang="scss">
-  #app {
-    display: flex;
-    height: 100vh;
-  }
-  .app {
-    &-content {
-      flex: 1;
-      overflow: auto;
-      height: 100%;
-      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-  }
-</style>

@@ -2,6 +2,11 @@
 @import "./atom-one-light";
 @import "./normalize";
 
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
 .markdown-body {
   padding-top: 16px;
   margin: 0 auto;
@@ -28,3 +33,62 @@
     max-width:960px
   }
 }
+
+.markdown-body table td {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 48px;
+}
+
+
+.demo {
+  &-content {
+    position: relative;
+    padding-left: 256px;
+  }
+  &-divider {
+    height: 1px;
+    margin: 0;
+    border: none;
+    flex-shrink: 0;
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+  &-list {
+    color: rgba(0,0,0,0.87);
+    &__group {
+      &__header {
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        height: 40px;
+        cursor: pointer;
+        &:hover {
+          background: rgba(0, 0, 0, 0.04);
+        }
+      }
+      &__items {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        li {
+          display: flex;
+          align-items: center;
+        }
+        a {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          height: 40px;
+          padding: 0 16px 0 40px;
+          color: inherit;
+          font-size: 14px;
+          text-decoration: none;
+          &:hover {
+            background: rgba(0,0,0,0.04);
+          }
+        }
+      }
+    }
+  }
+}
+

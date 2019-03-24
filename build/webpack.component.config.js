@@ -55,7 +55,7 @@ const webpackConfig = {
         test: /\.(svg|otf|ttf|woff2?|eot|gif|png|jpe?g)(\?\S*)?$/,
         use: {
           loader: 'url-loader',
-          options: {
+          query: {
             limit: 10000,
             name: path.posix.join('static', '[name].[hash:7].[ext]')
           }

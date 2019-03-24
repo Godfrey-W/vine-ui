@@ -1,4 +1,8 @@
 {
-  "sendcode": "./packages/sendcode/index.js",
-  "drawer": "./packages/sendcode/drawer.js"
+  "collapse": "./packages/collapse/index.js",
+  "collapse-panel": "./packages/collapse-panel/index.js",
+  "countdown": "./packages/countdown/index.js",
+  "rollnotice": "./packages/rollnotice/index.js",
+  "rollnotice-item": "./packages/rollnotice-item/index.js",
+  "sendcode": "./packages/sendcode/index.js"
 }

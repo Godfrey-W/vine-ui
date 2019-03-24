@@ -1,8 +1,7 @@
-import create from 'vine/src/utils/create'
-import { isServer } from 'vine/src/utils/util'
+import { isServer } from 'vine-ui/src/utils/helpers'
 
-export default create({
-  name: 'sendcode',
+export default {
+  name: 'vine-sendcode',
   props: {
     tag: {
       type: String,
@@ -34,7 +33,7 @@ export default create({
   computed: {
     classes () {
       return {
-        [`${this.b()}--disabled`]: this.start
+       'vine-sendcode--disabled': this.start
       }
     },
     isObjWithOpts () {
@@ -112,19 +111,18 @@ export default create({
     }
   },
   render (h) {
-    const { tag, b, classes, handleClick, start, tmpStr, $attrs } = this
-    const attrs = { ...$attrs }
-    if (tag === 'button') {
+    const attrs = { ...this.$attrs }
+    if (this.tag === 'button') {
       attrs.type = 'button'
-      attrs.disabled = start
+      attrs.disabled = this.start
     }
-    return h(tag, {
-      staticClass: b(),
-      class: classes,
+    return h(this.tag, {
+      staticClass: 'vine-sendcode',
+      class: this.classes,
       on: {
-        click: handleClick
+        click: this.handleClick
       },
       attrs
-    }, [tmpStr])
+    }, [this.tmpStr])
   }
-})
+}

@@ -64,7 +64,7 @@ export default {
 
 ## Sendcode Props
 
-| 参数 | 介绍 | 类型 | 可选值 | 默认值 |
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
 |------|------|------|------|------|
 | value | 开始倒计时状态 | Boolean | - | false |
 | second | 倒计时时长（秒） | Number/String | - | 60 |

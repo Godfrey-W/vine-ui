@@ -18,7 +18,7 @@ const webpackConfig = {
   mode: process.env.NODE_ENV,
   entry: {
     docs: './examples/entry.js',
-    hsvui: './src/index.js'
+    'vine-ui': './src/index.js'
   },
   output: {
     path: path.resolve(process.cwd(), './examples/vine/'),

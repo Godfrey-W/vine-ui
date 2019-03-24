@@ -19,7 +19,7 @@ exports.alias = {
   '@': path.resolve(__dirname, '../src'),
   components: path.resolve(__dirname, '../src/components'),
   examples: path.resolve(__dirname, '../examples'),
-  vine: path.resolve(__dirname, '../')
+  'vine-ui': path.resolve(__dirname, '../')
 }
 
 exports.vue = {
