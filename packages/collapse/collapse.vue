@@ -1,3 +1,10 @@
+<template>
+  <div class="vine-collapse">
+    <slot />
+  </div>
+</template>
+
+<script>
 export default {
   name: 'vine-collapse',
   provide () {
@@ -89,10 +96,6 @@ export default {
       this.items.splice(index, 1)
       this.open.splice(index, 1)
     }
-  },
-  render (h) {
-    return h('div', {
-      staticClass: 'vine-collapse'
-    }, this.$slots.default)
   }
 }
+</script>

@@ -7,8 +7,7 @@
 :::demo
 ```html
 <vine-collapse class="demo-collapse">
-  <vine-collapse-panel>
-    <h3 slot="header">静夜思</h3>
+  <vine-collapse-panel title="静夜思">
     <p>床前明月光</p>
     <p>疑似地上霜</p>
     <p>举头望明月</p>
@@ -23,8 +22,7 @@
 :::demo
 ```html
 <vine-collapse class="demo-collapse" v-model="panel" accordion>
-  <vine-collapse-panel v-for="i in 5" :key="i">
-    <h3 slot="header">Item</h3>
+  <vine-collapse-panel v-for="i in 5" :key="i" title="Item">
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </p>
@@ -58,6 +56,13 @@ export default {
 | disabled | 是否禁用当前panel | Boolean | - | false |
 | hide-actions | 隐藏内容标题中的展开图标 | Boolean | - | false |
 
+## CollapsePanel Slots
+| name | 说明 |
+|------|------|
+| default | 面板内容 |
+| title | 面板头标题 |
+| actions | 面板头图标 |
+
 <script>
 export default {
   data () {
@@ -71,5 +76,9 @@ export default {
 <style lang="scss">
   .demo-collapse {
     width: 600px;
+    .vine-collapse-panel__title {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 </style>

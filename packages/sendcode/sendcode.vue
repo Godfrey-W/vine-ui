@@ -1,23 +1,39 @@
-import { isServer } from 'vine-ui/src/utils/helpers'
+<template>
+  <button class="vine-sendcode"
+    :class="{'vine-sendcode--disabled': disabled || start}"
+    :disabled="disabled || start"
+    @click="onClick"
+  >
+    {{ tmpStr }}
+  </button>
+</template>
 
+<script>
+import { isServer } from 'vine-ui/src/utils/helpers'
 export default {
   name: 'vine-sendcode',
   props: {
-    tag: {
-      type: String,
-      default: 'button'
-    },
-    options: {
-      type: Object,
-      default: null
-    },
+    value: Boolean,
+    disabled: Boolean,
     second: {
-      default: 60,
+      type: [String, Number],
       validator (val) {
         return /^\d*$/.test(val)
-      }
+      },
+      default: 60
     },
-    value: Boolean,
+    initText: {
+      type: String,
+      default: '发送验证码'
+    },
+    runText: {
+      type: String,
+      default: '{%s}s'
+    },
+    resetText: {
+      type: String,
+      default: '重新发送验证码'
+    },
     storageKey: String
   },
   data () {
@@ -30,31 +46,12 @@ export default {
       resend: false
     }
   },
-  computed: {
-    classes () {
-      return {
-       'vine-sendcode--disabled': this.start
-      }
-    },
-    isObjWithOpts () {
-      return this.options && typeof this.options === 'object'
-    },
-    initTxt () {
-      return this.isObjWithOpts && this.options.initTxt ? this.options.initTxt : '发送验证码'
-    },
-    runTxt () {
-      return this.isObjWithOpts && this.options.runTxt ? this.options.runTxt : '{%s}s'
-    },
-    resetTxt () {
-      return this.isObjWithOpts && this.options.resetTxt ? this.options.resetTxt : '重新发送验证码'
-    }
-  },
   watch: {
     value (val) {
       this.start = val
       if (!val) {
         clearInterval(this.timer)
-        this.tmpStr = this.resend ? this.resetTxt : this.initTxt
+        this.tmpStr = this.resend ? this.resetText : this.initText
         if (this.storageKey) {
           window.sessionStorage.removeItem(this.storageKey)
           this.lastSecond = 0
@@ -65,14 +62,14 @@ export default {
     }
   },
   created () {
-    this.tmpStr = this.initTxt
+    this.tmpStr = this.initText
 
     if (isServer) return
 
     const lastSecond = ~~((window.sessionStorage.getItem(this.storageKey) - Date.now()) / 1000)
     if (lastSecond > 0 && this.storageKey) {
       this.$emit('input', true)
-      this.tmpStr = this.getStr(lastSecond)
+      this.getTmpStr(lastSecond)
       this.lastSecond = lastSecond
     }
   },
@@ -80,10 +77,11 @@ export default {
     !this.storageKey && this.timeout()
   },
   methods: {
-    handleClick () {
-      if (!this.start) this.$emit('click')
+    onClick () {
+      if (!this.start && !this.disabled) this.$emit('click')
     },
     countdownStart () {
+      if (this.disabled) return
       let lastSecond = this.lastSecond
       let second = lastSecond || this.runSecond
       if (this.storageKey) {
@@ -91,38 +89,24 @@ export default {
         window.sessionStorage.setItem(this.storageKey, runSecond)
       }
       if (!lastSecond) {
-        this.tmpStr = this.getStr(second)
+        this.getTmpStr(second)
       }
       this.timer = setInterval(() => {
         second--
-        this.tmpStr = this.getStr(second)
+        this.getTmpStr(second)
         second <= 0 && this.timeout()
       }, 1000)
     },
     timeout () {
       this.resend = true
-      this.tmpStr = this.resetTxt
+      this.tmpStr = this.resetText
       this.start = false
       this.$emit('input', false)
       clearInterval(this.timer)
     },
-    getStr (second) {
-      return this.runTxt.replace(/\{([^{]*?)%s(.*?)\}/g, second)
+    getTmpStr (second) {
+      this.tmpStr = this.runText.replace(/\{([^{]*?)%s(.*?)\}/g, second)
     }
-  },
-  render (h) {
-    const attrs = { ...this.$attrs }
-    if (this.tag === 'button') {
-      attrs.type = 'button'
-      attrs.disabled = this.start
-    }
-    return h(this.tag, {
-      staticClass: 'vine-sendcode',
-      class: this.classes,
-      on: {
-        click: this.handleClick
-      },
-      attrs
-    }, [this.tmpStr])
   }
 }
+</script>

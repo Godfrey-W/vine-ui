@@ -21,7 +21,7 @@ const webpackConfig = {
     'vine-ui': './src/index.js'
   },
   output: {
-    path: path.resolve(process.cwd(), './examples/vine/'),
+    path: path.resolve(process.cwd(), './examples/vine-ui/'),
     publicPath: '',
     filename: '[name].[hash:7].js',
     chunkFilename: isProd ? '[name].[hash:7].js' : '[name].js'

@@ -23,18 +23,20 @@ export default {
 
 :::demo
 ```html
-<vine-sendcode class="demo-sendcode-btn" v-model="start2" :second="second2" :options="options2" @click="start2 = true"></vine-sendcode>
+<vine-sendcode
+  class="demo-sendcode-btn"
+  v-model="start2"
+  :second="10"
+  init-text="点我啊，你点我啊"
+  run-text="在{%s}秒后你就可以重新获取啦"
+  reset-text="你可以重新获取验证码啦"
+  @click="start2 = true"
+></vine-sendcode>
 <script>
 export default {
   data () {
     return {
-      start2: false,
-      second2: 10,
-      options2: {
-        initTxt: '点我啊，你点我啊',
-        runTxt: '在{%s}秒后你就可以重新获取啦',
-        resetTxt: '你可以重新获取验证码啦'
-      }
+      start2: false
     }
   }
 }
@@ -46,15 +48,18 @@ export default {
 
 :::demo
 ```html
-<vine-sendcode class="demo-sendcode-btn" v-model="start3" storage-key="vine_local_" :options="options3" @click="start3 = true"></vine-sendcode>
+<vine-sendcode
+  class="demo-sendcode-btn"
+  v-model="start3"
+  storage-key="vine_local_"
+  init-text="刷新页面倒计时还会继续"
+  @click="start3 = true"
+></vine-sendcode>
 <script>
 export default {
   data () {
     return {
-      start3: false,
-      options3: {
-        runTxt: '刷新页面倒计时还会继续'
-      }
+      start3: false
     }
   }
 }
@@ -68,7 +73,10 @@ export default {
 |------|------|------|------|------|
 | value | 开始倒计时状态 | Boolean | - | false |
 | second | 倒计时时长（秒） | Number/String | - | 60 |
-| options | 自定义配置 | Object | - | options.initTxt: '发送验证码'<br>options.runTxt: '{%s}s'<br>options.resetTxt: '重新发送验证码' |
+| disabled | 是否禁用 | Booleang | - | false |
+| init-text | 初始化按钮显示文本 | String | - | 发送验证码 |
+| run-text | 运行时显示文本 | String | - | {%s}s |
+| reset-text | 运行结束后显示文本 | String | - | 重新发送验证码 |
 | storage-key | 储存倒计时剩余时间sessionStorage的键值，设置不为空后，刷新页面倒计时将继续 | String | - | - |
 
 <script>
@@ -77,16 +85,7 @@ export default {
     return {
       start: false,
       start2: false,
-      start3: false,
-      second2: 10,
-      options2: {
-        initTxt: '点我啊，你点我啊',
-        runTxt: '在{%s}秒后你就可以重新获取啦',
-        resetTxt: '你可以重新获取验证码啦'
-      },
-      options3: {
-        initTxt: '刷新页面倒计时还会继续'
-      }
+      start3: false
     }
   }
 }

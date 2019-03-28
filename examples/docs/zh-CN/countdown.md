@@ -40,12 +40,12 @@
 ```html
 <vine-countdown
   :value="new Date(Date.now() + 6 * 24 * 3600 * 1000)"
-  format="ss秒mm分钟hh时dd日"
+  format="{%s}秒{%m}分钟{%h}时{%d}日"
 ></vine-countdown>
 ```
 :::
 
-## 通过Slot作用于插槽自定义HTML模板（Vue 2.6.0以上）
+## 通过Slot作用域插槽自定义HTML模板（Vue 2.6.0以上）
 
 :::demo
 ```html
@@ -67,7 +67,7 @@
 |------|------|------|------|------|
 | value | 开始结束时间点，时间格式倒计时状态 | String/Number/Date | - | Date.now() |
 | type | 传入时间类型，endtime：结束时间（时间格式），rest：剩余时间（秒），timestamp：结束时间戳（毫秒） | String | endtime/rest/timestamp | endtime |
-| format | 模板参数 | String | - | 'dd天hh小时mm分ss秒' |
+| format | 模板参数 | String | - | {%d}天{%h}时{%m}分{%s}秒 |
 | done-text | 倒计时结束后显示文字 | String | - | 已结束 |
 
 ## Countdown Events

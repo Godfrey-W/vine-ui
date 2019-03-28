@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { oneOf } from 'vine-ui/src/utils/helpers'
 export default {
   name: 'vine-countdown',
   props: {
@@ -19,13 +20,13 @@ export default {
     type: {
       type: String,
       validator (value) {
-        return ['endtime', 'rest', 'timestamp'].indexOf(value) > -1
+        return oneOf(value, ['endtime', 'rest', 'timestamp'])
       },
       default: 'endtime'
     },
     format: {
       type: String,
-      default: 'dd天hh小时mm分ss秒'
+      default: '{%d}天{%h}时{%m}分{%s}秒'
     },
     doneText: {
       type: String,
@@ -92,12 +93,16 @@ export default {
         's+': parseInt(timestamp % 60, 10)
       }
       const t = {}
+      const ment = function (num) {
+        if (num <= 0)  return '00'
+        return num < 10 ? '0' + num : num
+      }
       for (const k in o) {
-        if (new RegExp('(' + k + ')').test(format)) {
-          const ment = RegExp.$1.length === 1
-            ? o[k] : (('' + o[k]).length === 1 ? '0' + o[k] : o[k])
-          t[RegExp.$1.charAt(0)] = ment
-          format = format.replace(RegExp.$1, ment)
+        const reg = new RegExp('({%' + k + '})')
+        
+        if (reg.test(format)) {
+          t[RegExp.$1.slice(2, 3)] = ment(o[k])
+          format = format.replace(reg, ment(o[k]))
         }
       }
       this.timeObj = t

@@ -1,7 +1,6 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
-
-const Components = require('../components.json')
+const Components = require('./bin/get-components')()
 
 let externals = {}
 

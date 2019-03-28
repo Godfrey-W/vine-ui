@@ -2,12 +2,20 @@ const path = require('path')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-const Components = require('../components.json')
+const Components = require('./bin/get-components')()
 const config = require('./config')
+
+function getEntries () {
+  const entries = {}
+  Components.forEach(key => {
+    entries[key] = `./packages/${key}/index.js`
+  })
+  return entries
+}
 
 const webpackConfig = {
   mode: 'production',
-  entry: Components,
+  entry: getEntries(),
   output: {
     path: path.resolve(process.cwd(), './lib'),
     publicPath: '/dist/',
