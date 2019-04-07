@@ -1,0 +1,120 @@
+.vine {
+  &-dialog {
+    &__wrapper {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    position: relative;
+    width: 100%;
+    margin: 24px;
+    box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),
+      0px 24px 38px 3px rgba(0,0,0,0.14),
+      0px 9px 46px 8px rgba(0,0,0,0.12);
+    background-color: #fff;
+    border-radius: 2px;
+    pointer-events: auto;
+    overflow-y: auto;
+    &:not(.vine-dialog--fullscreen) {
+      max-height: 90%;
+    }
+    &__header {
+      padding: 16px 16px 8px;
+    }
+    &__title {
+      margin-top: 0;
+      margin-bottom: 0;
+      height: 22px;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 500;
+      color: inherit;
+    }
+    &__close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 11px 16px;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      color: #000;
+      background-color: transparent;
+      opacity: .5;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      -webkit-appearance: none;
+      &:focus, &:hover {
+        opacity: .75;
+      }
+    }
+    &__body {
+      padding: 16px;
+    }
+    &__footer {
+      padding: 8px 16px 16px;
+      text-align: right;
+    }
+    &--fullscreen {
+      position: fixed;
+      height: 100%;
+      top: 0;
+      left: 0;
+      margin: 0;
+      border-radius: 0;
+      overflow-y: auto;
+    }
+    &--scrollable {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      .vine-dialog {
+        &__body {
+          flex: 1;
+          overflow-y: auto;
+        }
+      }
+    }
+  }
+}
+
+.dialog-transition-enter-active {
+  animation: dialog-fade-in .3s
+}
+
+.dialog-transition-leave-active {
+  animation: dialog-fade-out .3s
+}
+
+@keyframes dialog-fade-in {
+  0% {
+    transform: translate3d(0, -20%, 0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-fade-out {
+  0% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(0, -20%, 0);
+    opacity: 0;
+  }
+}

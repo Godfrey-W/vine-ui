@@ -46,15 +46,15 @@ export default {
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 |------|------|------|------|------|
 | value | 当前展开面板的 id | Number/Array | - | - |
-| disabled | 是否禁用 | Boolean | - | false |
-| accordion | 是否开启手风琴模式 | Boolean | - | false |
+| disabled | 是否禁用 | Boolean | - | - |
+| accordion | 是否开启手风琴模式 | Boolean | - | - |
 
 ## CollapsePanel Props
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 |------|------|------|------|------|
-| disabled | 是否禁用当前panel | Boolean | - | false |
-| hide-actions | 隐藏内容标题中的展开图标 | Boolean | - | false |
+| disabled | 是否禁用当前panel | Boolean | - | - |
+| hide-actions | 隐藏内容标题中的展开图标 | Boolean | - | - |
 
 ## CollapsePanel Slots
 | name | 说明 |

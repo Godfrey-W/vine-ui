@@ -26,6 +26,7 @@ export default {
       navsData: [
         { path: '/collapse', title: 'Collapse 折叠面板' },
         { path: '/countdown', title: 'Countdown 时间倒计时' },
+        { path: '/dialog', title: 'Dialog 对话框' },
         { path: '/rollnotice', title: 'Rollnotice 滚动公告' },
         { path: '/sendcode', title: 'Sendcode 发送验证码' }
       ]
@@ -33,4 +34,3 @@ export default {
   }
 }
 </script>
-

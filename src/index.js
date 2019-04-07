@@ -3,6 +3,7 @@
 import Collapse from '../packages/collapse'
 import CollapsePanel from '../packages/collapse-panel'
 import Countdown from '../packages/countdown'
+import Dialog from '../packages/dialog'
 import Rollnotice from '../packages/rollnotice'
 import RollnoticeItem from '../packages/rollnotice-item'
 import Sendcode from '../packages/sendcode'
@@ -13,6 +14,7 @@ const components = [
   Collapse,
   CollapsePanel,
   Countdown,
+  Dialog,
   Rollnotice,
   RollnoticeItem,
   Sendcode
@@ -35,6 +37,7 @@ export default {
   Collapse,
   CollapsePanel,
   Countdown,
+  Dialog,
   Rollnotice,
   RollnoticeItem,
   Sendcode

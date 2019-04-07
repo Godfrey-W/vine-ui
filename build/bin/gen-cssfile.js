@@ -1,11 +1,11 @@
 
 const fs = require('fs')
 const path = require('path')
-let Components = require('../../components.json')
+let Components = require('./get-components')()
 const themes = [
   'vine-theme'
 ]
-Components = Object.keys(Components)
+// Components = Object.keys(Components)
 const basepath = path.resolve(__dirname, '../../packages/')
 
 function fileExists(filePath) {

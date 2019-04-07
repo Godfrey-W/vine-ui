@@ -13,7 +13,7 @@
     "build:file": "node build/bin/build-entry.js",
     "build:theme": "node build/bin/gen-cssfile && gulp build --gulpfile packages/vine-theme/gulpfile.js && cp-cli packages/vine-theme/lib lib/vine-theme",
     "deploy:build": "npm run build:file && cross-env NODE_ENV=production webpack --config build/webpack.demo.config.js",
-    "dev": "npm run build:file && cross-env NODE_ENV=development webpack-dev-server --config build/webpack.demo.config.js",
+    "dev": "npm run build:file && node build/bin/gen-cssfile && cross-env NODE_ENV=development webpack-dev-server --config build/webpack.demo.config.js",
     "clean": "rimraf lib && rimraf src/*/lib",
     "build:component": "npm run clean && webpack --config build/webpack.component.config.js",
     "dist": "npm run clean && npm run build:file && webpack --config build/webpack.config.js && webpack --config build/webpack.common.config.js && webpack --config build/webpack.component.config.js && npm run build:theme"

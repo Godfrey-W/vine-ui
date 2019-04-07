@@ -7,6 +7,7 @@ import 'vine-ui/packages/vine-theme/src/index.scss'
 import './assets/styles/index.scss'
 
 import DemoBlock from './components/demo-block'
+import DemoButton from './components/demo-button'
 import DemoDrawer from './components/demo-drawer'
 import DemoIcon from './components/demo-icon'
 
@@ -20,6 +21,7 @@ function loadDoc(name) {
 
 const demoComponents = [
   DemoBlock,
+  DemoButton,
   DemoDrawer,
   DemoIcon
 ]
@@ -38,6 +40,10 @@ const router = new VueRouter({
     {
       path: '/countdown',
       component: loadDoc('countdown')
+    },
+    {
+      path: '/dialog',
+      component: loadDoc('dialog')
     },
     {
       path: '/rollnotice',

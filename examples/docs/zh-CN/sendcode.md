@@ -67,13 +67,13 @@ export default {
 ```
 :::
 
-## Sendcode Props
+## Props
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 |------|------|------|------|------|
-| value | 开始倒计时状态 | Boolean | - | false |
+| value | 开始倒计时状态 | Boolean | - | - |
 | second | 倒计时时长（秒） | Number/String | - | 60 |
-| disabled | 是否禁用 | Booleang | - | false |
+| disabled | 是否禁用 | Booleang | - | - |
 | init-text | 初始化按钮显示文本 | String | - | 发送验证码 |
 | run-text | 运行时显示文本 | String | - | {%s}s |
 | reset-text | 运行结束后显示文本 | String | - | 重新发送验证码 |
